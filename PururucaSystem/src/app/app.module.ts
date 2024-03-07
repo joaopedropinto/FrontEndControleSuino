@@ -11,9 +11,10 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { FeatherModule } from 'angular-feather';
 import { Trash, Edit, FileMinus } from 'angular-feather/icons';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: CadastroSuinoComponent },
+  { path: '', canActivate: [AuthGuard], component: CadastroSuinoComponent },
   { path: 'login', component: LoginComponent },
 ];
 
