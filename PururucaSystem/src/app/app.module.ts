@@ -10,11 +10,11 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { FeatherModule } from 'angular-feather';
 import { Trash, Edit, FileMinus } from 'angular-feather/icons';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '/login', component: LoginFormComponent },
-  { path: '/CadastroSuino', component: CadastroSuinoComponent },
+  { path: '', component: CadastroSuinoComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 const icons = {
@@ -26,7 +26,8 @@ const icons = {
 @NgModule({
   declarations: [
     AppComponent,
-    CadastroSuinoComponent
+    CadastroSuinoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
