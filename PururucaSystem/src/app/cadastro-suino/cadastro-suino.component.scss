@@ -1,0 +1,61 @@
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    margin-top: -25px;
+    height: 180vh;
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0px 0px 4px 0px #aaa;
+        border-radius: 5px; /* Aumentando a curvatura das bordas */
+        padding: 55px;
+        background-color: #fff;
+
+        form {
+            width: 100%; /* Ajustei para 100% para que o formulário fique responsivo */
+
+            label {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px; /* Aumentei o espaço entre os campos */
+
+                input,
+                select {
+                    border: 1px solid #aaa;
+                    border-radius: 5px;
+                    padding: 10px;
+                    font-size: 16px; /* Aumentando o tamanho da fonte */
+                    outline: none;
+                    width: 100%;
+                }
+
+                span {
+                    font-size: 12px; /* Aumentando o tamanho da fonte */
+                    font-weight: bold;
+                    color: #e25a57;
+                    margin-top: 10px; /* Diminuindo a distância da mensagem de erro para o campo */
+                }
+            }
+
+            button {
+                padding: 12px 40px; /* Reduzindo o padding do botão */
+                font-size: 16px;
+                border-radius: 5px;
+                border: none;
+                background-color: #843bf8;
+                color: #fff;
+                cursor: pointer;
+                margin-top: 20px;
+                width: fit-content; /* Ajustando a largura do botão de acordo com o conteúdo */
+
+                &:hover {
+                    background-color: #664896;
+                }
+            }
+        }
+    }
+}
