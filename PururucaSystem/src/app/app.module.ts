@@ -6,12 +6,22 @@ import { AppComponent } from './app.component';
 import { CadastroSuinoComponent } from './cadastro-suino/cadastro-suino.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { FeatherModule } from 'angular-feather';
+import { Trash, Edit, FileMinus } from 'angular-feather/icons';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 const routes: Routes = [
-  { path: '', component: CadastroSuinoComponent },
+  { path: '/login', component: LoginFormComponent },
+  { path: '/CadastroSuino', component: CadastroSuinoComponent },
 ];
 
+const icons = {
+  Trash,
+  Edit,
+  FileMinus
+};
 
 @NgModule({
   declarations: [
@@ -24,9 +34,11 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FeatherModule.pick(icons)
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  bootstrap: [AppComponent],
+  exports: [FeatherModule]
 })
 export class AppModule { }
