@@ -14,7 +14,7 @@
             <span *ngIf="form.get('earTag')?.errors?.['earTagExists'] && form.get('earTag')?.touched">
                 O número de brinco já existe!
             </span>
-          </label>        
+          </label> 
           <label for="fatherEarTag">
             Brinco do pai
             <input id="fatherEarTag" formControlName="fatherEarTag" type="number" />
@@ -43,13 +43,10 @@
           <label for="dateOfDeparture">
             Data da saída
             <input id="dateOfDeparture" formControlName="dateOfDeparture" type="date" />
-            <span *ngIf="form.get('dateOfDeparture')?.errors?.['required'] && form.get('dateOfDeparture')?.touched">
-                Este campo é obrigatório.
+            <span *ngIf="!form.get('dateOfDeparture')?.valid && form.get('dateOfDeparture')?.touched">
+              Por favor, insira a data de saída do animal!
             </span>
-            <span *ngIf="form.get('dateOfDeparture')?.errors?.['futureDateInRelationToBirth'] && form.get('dateOfDeparture')?.touched">
-                A data de saída deve ser igual ou posterior à data de nascimento.
-            </span>
-          </label>    
+          </label>
           <label for="status">
             Status
             <select id="status" formControlName="status">
