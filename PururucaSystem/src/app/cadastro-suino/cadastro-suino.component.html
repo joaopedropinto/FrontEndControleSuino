@@ -6,7 +6,7 @@
       <form id="form" (ngSubmit)="addSuino()" [formGroup]="form">
         <div class="input-group">
           <label for="earTag">
-            Brinco do animal2
+            Brinco do animal
             <input id="earTag" formControlName="earTag" type="number" />
             <span *ngIf="form.get('earTag')?.errors?.['required'] && form.get('earTag')?.touched">
                 Por favor, insira o brinco do animal!
