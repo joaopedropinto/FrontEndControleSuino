@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { IWeight } from '../models/suino.model';
 import { ActivatedRoute } from '@angular/router';
-import { DataBaseService } from '../data-base.service';
-import { PesagemService } from '../pesagem.service';
+import { DataBaseService } from '../services/data-base.service';
+import { PesagemService } from '../services/pesagem.service';
 
 Chart.register(...registerables)
 

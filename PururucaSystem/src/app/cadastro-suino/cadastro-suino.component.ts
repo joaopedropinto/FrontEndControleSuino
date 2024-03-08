@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DataBaseService } from '../data-base.service';
+import { DataBaseService } from '../services/data-base.service';
 import { Router } from '@angular/router';
 import { ageValidator } from '../validators/age.validator';
 import { nonFutureDateValidator } from '../validators/non-future-age.validator';

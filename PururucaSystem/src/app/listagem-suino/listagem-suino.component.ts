@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ISuino } from '../models/suino.model';
-import { DataBaseService } from '../data-base.service';
+import { DataBaseService } from '../services/data-base.service';
 import { Router } from '@angular/router';
 
 

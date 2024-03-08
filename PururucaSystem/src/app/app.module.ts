@@ -21,6 +21,7 @@ import { HomeComponent } from './home/home.component';
 import { EditaPesagemComponent } from './edita-pesagem/edita-pesagem.component';
 import { DateFormatPipe } from './pipes/date-format/date-format.pipe';
 import { AgePipe } from './pipes/age/age.pipe';
+import { ContatoComponent } from './contato/contato.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'listagem-suino', canActivate: [AuthGuard], component: ListagemSuinoComponent },
   { path: 'listagem-pesos/:id', canActivate: [AuthGuard], component: ListagemPesosComponent },
   { path: 'edita/:id', canActivate: [AuthGuard], component: EditaSuinoComponent },
+  { path: 'contato', canActivate: [AuthGuard], component: ContatoComponent },
   { path: 'edita-pesagem/:id/:pesagemId', canActivate: [AuthGuard], component: EditaPesagemComponent },
 ];
 
@@ -55,7 +57,8 @@ const icons = {
     HomeComponent,
     EditaPesagemComponent,
     DateFormatPipe,
-    AgePipe
+    AgePipe,
+    ContatoComponent
   ],
   imports: [
     BrowserModule,
