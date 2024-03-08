@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto+Condensed:ital@0;1&display=swap');
+
+.home {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 60vw;
+    height: 80vh;
+
+    .describe-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 25px;
+        height: 65%;
+
+        h1 {
+            font-size: 44px;
+            font-family: "Oswald", sans-serif;
+        }
+
+        p {
+            color: #cdae73;
+            font-weight: bold;
+
+            font-size: 32px;
+            font-family: "Oswald", sans-serif;
+        }
+    }
+
+}

@@ -1,0 +1,13 @@
+<div class="edit-weight">
+  <div class="form-container">
+    <h1>Cadastrar pesagem</h1>
+    <form id="form" (ngSubmit)="update()" [formGroup]="form">
+      <label for="weight">
+        Valor da pesagem
+        <input id="weight" formControlName="weight" type="number" />
+      </label>
+      <button type="submit">Cadastrar</button>
+      <button (click)="cancel()" type="button">Cancelar</button>
+    </form>
+  </div>
+</div>

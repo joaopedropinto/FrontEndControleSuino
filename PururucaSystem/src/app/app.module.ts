@@ -9,17 +9,26 @@ import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { FeatherModule } from 'angular-feather';
-import { Trash, Edit, FileMinus, TrendingUp} from 'angular-feather/icons';
+import { Trash, Edit, FileMinus, TrendingUp } from 'angular-feather/icons';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ListagemSuinoComponent } from './listagem-suino/listagem-suino.component';
 import { EditaSuinoComponent } from './edita-suino/edita-suino.component';
+import { HeaderComponent } from './header/header.component';
+import { ListagemPesosComponent } from './listagem-pesos/listagem-pesos.component';
+import { CadastraPesagemComponent } from './cadastra-pesagem/cadastra-pesagem.component';
+import { HomeComponent } from './home/home.component';
+import { EditaPesagemComponent } from './edita-pesagem/edita-pesagem.component';
 
 const routes: Routes = [
-  { path: '', canActivate: [AuthGuard], component: CadastroSuinoComponent },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'casdastro-suino', component: CadastroSuinoComponent },
+  { path: 'cadastro-peso/:id', component: CadastraPesagemComponent },
   { path: 'listagem-suino', component: ListagemSuinoComponent },
+  { path: 'listagem-pesos/:id', component: ListagemPesosComponent },
   { path: 'edita/:id', component: EditaSuinoComponent },
+  { path: 'edita-pesagem/:id/:pesagemId', component: EditaPesagemComponent },
 ];
 
 const icons = {
@@ -35,7 +44,12 @@ const icons = {
     CadastroSuinoComponent,
     LoginComponent,
     ListagemSuinoComponent,
-    EditaSuinoComponent
+    EditaSuinoComponent,
+    HeaderComponent,
+    ListagemPesosComponent,
+    CadastraPesagemComponent,
+    HomeComponent,
+    EditaPesagemComponent
   ],
   imports: [
     BrowserModule,

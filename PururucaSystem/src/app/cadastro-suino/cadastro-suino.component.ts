@@ -21,13 +21,13 @@ export class CadastroSuinoComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      earTag: ['', Validators.required], // Brinco do animal: Aceita somente número e é requerido
-      fatherEarTag: ['', Validators.required], // Brinco do pai: Aceita somente número e é requerido
-      motherEarTag: ['', Validators.required], // Brinco da mãe: Aceita somente número e é requerido
-      dateOfBirth: ['', [Validators.required/*, ageValidator()*/]], // Data de Nascimento: dia / mês / ano e é requerido
-      dateOfDeparture: ['', [Validators.required/*, nonFutureDateValidator()*/]], // Data da saída: dia / mês / ano e é requerido
-      status: ['', Validators.required], // Status: Pode ser “Ativo”, “Vendido” ou “Morto”
-      gender: ['', Validators.required] // Sexo: Pode ser “M” ou “F”
+      earTag: ['', Validators.required], 
+      fatherEarTag: ['', Validators.required], 
+      motherEarTag: ['', Validators.required], 
+      dateOfBirth: ['', [Validators.required/*, ageValidator()*/]],
+      dateOfDeparture: ['', [Validators.required/*, nonFutureDateValidator()*/]],
+      status: ['', Validators.required], 
+      gender: ['', Validators.required]
     });
   }
 
@@ -37,7 +37,7 @@ export class CadastroSuinoComponent implements OnInit {
         next: () => {
           console.log('Cadastro realizado com sucesso!');
           alert('Cadastro realizado com sucesso!');
-          this.router.navigate(['atendimentos']);
+          this.router.navigate(['listagem-suino']);
           this.form.reset(); 
         },
         error: (erro) => {

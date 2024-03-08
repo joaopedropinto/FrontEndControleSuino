@@ -25,7 +25,7 @@
             <td>{{ suino.dateOfDeparture }}</td>
             <td>{{ suino.status }}</td>
             <td>{{ suino.gender === 'M' ? 'Macho' : 'Fêmea' }}</td>
-            <td class="weights" [routerLink]="['/pesagem', suino.id]">
+            <td class="weighing" [routerLink]="['/listagem-pesos', suino.id]">
                 <i-feather name="trending-up"></i-feather>
             </td>
             <td class="details" [routerLink]="['/detalhes', suino.id]">
