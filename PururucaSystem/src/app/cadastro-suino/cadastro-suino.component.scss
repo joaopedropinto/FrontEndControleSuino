@@ -4,56 +4,57 @@
     align-items: center;
     width: 90vw;
     margin-top: -25px;
-    height: 180vh;
 
     .form-container {
         display: flex;
         flex-direction: column;
         align-items: center;
         box-shadow: 0px 0px 4px 0px #aaa;
-        border-radius: 5px; /* Aumentando a curvatura das bordas */
-        padding: 55px;
+        border-radius: 15px;
+        width: 35%;
+        padding: 30px;
         background-color: #fff;
 
         form {
-            width: 100%; /* Ajustei para 100% para que o formulário fique responsivo */
+            width: 80%;
 
             label {
                 display: flex;
                 flex-direction: column;
-                margin-bottom: 20px; /* Aumentei o espaço entre os campos */
+                margin-bottom: 20px;
 
                 input,
                 select {
                     border: 1px solid #aaa;
                     border-radius: 5px;
                     padding: 10px;
-                    font-size: 16px; /* Aumentando o tamanho da fonte */
+                    font-size: 16px;
                     outline: none;
                     width: 100%;
                 }
 
                 span {
-                    font-size: 12px; /* Aumentando o tamanho da fonte */
+                    font-size: 12px;
                     font-weight: bold;
                     color: #e25a57;
-                    margin-top: 10px; /* Diminuindo a distância da mensagem de erro para o campo */
+                    margin-top: 10px;
                 }
             }
 
             button {
-                padding: 12px 40px; /* Reduzindo o padding do botão */
-                font-size: 16px;
-                border-radius: 5px;
+                width: 100%;
+                padding: 13px 90px;
+                font-size: 21px;
+                border-radius: 30px;
+
                 border: none;
-                background-color: #843bf8;
+                background-color: #cdae73;
+                box-shadow: 0px 0px 4px 0px #3f3f3f;
                 color: #fff;
                 cursor: pointer;
-                margin-top: 20px;
-                width: fit-content; /* Ajustando a largura do botão de acordo com o conteúdo */
 
                 &:hover {
-                    background-color: #664896;
+                    background-color: #3f3f3f;
                 }
             }
         }
