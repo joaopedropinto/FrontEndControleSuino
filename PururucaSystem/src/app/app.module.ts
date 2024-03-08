@@ -9,7 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { FeatherModule } from 'angular-feather';
-import { Trash, Edit, FileMinus } from 'angular-feather/icons';
+import { Trash, Edit, FileMinus, TrendingUp} from 'angular-feather/icons';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ListagemSuinoComponent } from './listagem-suino/listagem-suino.component';
@@ -25,7 +25,8 @@ const routes: Routes = [
 const icons = {
   Trash,
   Edit,
-  FileMinus
+  FileMinus,
+  TrendingUp
 };
 
 @NgModule({

@@ -10,6 +10,7 @@
             <th>Data da Saída</th>
             <th>Status</th>
             <th>Sexo</th>
+            <th>Histórico de pesagem</th>
             <th>Detalhes</th>
             <th>Editar</th>
             <th>Excluir</th>
@@ -24,6 +25,9 @@
             <td>{{ suino.dateOfDeparture }}</td>
             <td>{{ suino.status }}</td>
             <td>{{ suino.gender === 'M' ? 'Macho' : 'Fêmea' }}</td>
+            <td class="weights" [routerLink]="['/pesagem', suino.id]">
+                <i-feather name="trending-up"></i-feather>
+            </td>
             <td class="details" [routerLink]="['/detalhes', suino.id]">
               <i-feather name="file-minus"></i-feather>
             </td>
