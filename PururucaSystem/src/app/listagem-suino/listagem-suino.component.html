@@ -21,8 +21,8 @@
             <td>{{ suino.earTag }}</td>
             <td>{{ suino.fatherEarTag }}</td>
             <td>{{ suino.motherEarTag }}</td>
-            <td>{{ suino.dateOfBirth }}</td>
-            <td>{{ suino.dateOfDeparture }}</td>
+            <td>{{ suino.dateOfBirth | dateFormat }}</td>
+            <td>{{ suino.dateOfDeparture | dateFormat }}</td>
             <td>{{ suino.status }}</td>
             <td>{{ suino.gender === 'M' ? 'Macho' : 'Fêmea' }}</td>
             <td class="weighing" [routerLink]="['/listagem-pesos', suino.id]">

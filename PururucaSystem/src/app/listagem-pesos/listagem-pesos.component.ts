@@ -82,6 +82,7 @@ export class ListagemPesosComponent implements OnInit {
     const indexToRemove = this.pesos.findIndex((pesagem) => pesagem.id = idItem);
     this.dataBaseService.deletePesagemByID(idList, idItem).subscribe(() => {
       this.pesos.splice(indexToRemove, 1);
+      this.pesagemService.notificarNovoPesoAdicionado();
     });
   }
 }
