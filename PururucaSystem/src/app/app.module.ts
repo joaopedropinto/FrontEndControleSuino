@@ -24,12 +24,12 @@ import { DateFormatPipe } from './date-format.pipe';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'casdastro-suino', component: CadastroSuinoComponent },
-  { path: 'cadastro-peso/:id', component: CadastraPesagemComponent },
-  { path: 'listagem-suino', component: ListagemSuinoComponent },
-  { path: 'listagem-pesos/:id', component: ListagemPesosComponent },
-  { path: 'edita/:id', component: EditaSuinoComponent },
-  { path: 'edita-pesagem/:id/:pesagemId', component: EditaPesagemComponent },
+  { path: 'casdastro-suino', canActivate: [AuthGuard], component: CadastroSuinoComponent },
+  { path: 'cadastro-peso/:id', canActivate: [AuthGuard], component: CadastraPesagemComponent },
+  { path: 'listagem-suino', canActivate: [AuthGuard], component: ListagemSuinoComponent },
+  { path: 'listagem-pesos/:id', canActivate: [AuthGuard], component: ListagemPesosComponent },
+  { path: 'edita/:id', canActivate: [AuthGuard], component: EditaSuinoComponent },
+  { path: 'edita-pesagem/:id/:pesagemId', canActivate: [AuthGuard], component: EditaPesagemComponent },
 ];
 
 const icons = {
