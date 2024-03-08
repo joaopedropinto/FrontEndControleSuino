@@ -9,26 +9,33 @@ import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { FeatherModule } from 'angular-feather';
-import { Trash, Edit, FileMinus } from 'angular-feather/icons';
+import { Trash, Edit, FileMinus, TrendingUp} from 'angular-feather/icons';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ListagemSuinoComponent } from './listagem-suino/listagem-suino.component';
+import { EditaSuinoComponent } from './edita-suino/edita-suino.component';
 
 const routes: Routes = [
   { path: '', canActivate: [AuthGuard], component: CadastroSuinoComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'listagem-suino', component: ListagemSuinoComponent },
+  { path: 'edita/:id', component: EditaSuinoComponent },
 ];
 
 const icons = {
   Trash,
   Edit,
-  FileMinus
+  FileMinus,
+  TrendingUp
 };
 
 @NgModule({
   declarations: [
     AppComponent,
     CadastroSuinoComponent,
-    LoginComponent
+    LoginComponent,
+    ListagemSuinoComponent,
+    EditaSuinoComponent
   ],
   imports: [
     BrowserModule,
