@@ -19,6 +19,7 @@ import { ListagemPesosComponent } from './listagem-pesos/listagem-pesos.componen
 import { CadastraPesagemComponent } from './cadastra-pesagem/cadastra-pesagem.component';
 import { HomeComponent } from './home/home.component';
 import { EditaPesagemComponent } from './edita-pesagem/edita-pesagem.component';
+import { DateFormatPipe } from './date-format.pipe';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -49,7 +50,8 @@ const icons = {
     ListagemPesosComponent,
     CadastraPesagemComponent,
     HomeComponent,
-    EditaPesagemComponent
+    EditaPesagemComponent,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule,
