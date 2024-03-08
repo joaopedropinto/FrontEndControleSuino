@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataBaseService } from '../data-base.service';
 import { Router } from '@angular/router';
-import { ageValidator } from '../validators/age.validator';
-import { nonFutureDateValidator } from '../validators/non-future-age.validator';
 import { earTagValidator } from '../validators/earTag.validator';
-
 @Component({
   selector: 'app-cadastro-suino',
   templateUrl: './cadastro-suino.component.html',
@@ -22,11 +19,11 @@ export class CadastroSuinoComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      earTag: ['', Validators.required, earTagValidator(this.dataBaseService)], 
+      earTag: ['', [Validators.required], earTagValidator(this.dataBaseService)], 
       fatherEarTag: ['', Validators.required], 
       motherEarTag: ['', Validators.required], 
-      dateOfBirth: ['', [Validators.required/*, ageValidator()*/]],
-      dateOfDeparture: ['', [Validators.required/*, nonFutureDateValidator()*/]],
+      dateOfBirth: ['', Validators.required],
+      dateOfDeparture: ['', Validators.required], 
       status: ['', Validators.required], 
       gender: ['', Validators.required]
     });
