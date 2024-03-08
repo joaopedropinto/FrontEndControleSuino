@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.loginUser(this.form.value.user, this.form.value.password).subscribe({
       next: () => {
-        alert("Logou")
+        alert("Logando...")
         this.router.navigate(['/']);
       },
       error: () => {
