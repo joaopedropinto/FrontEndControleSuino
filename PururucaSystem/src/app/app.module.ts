@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'casdastro-suino', canActivate: [AuthGuard], component: CadastroSuinoComponent },
   { path: 'cadastro-peso/:id', canActivate: [AuthGuard], component: CadastraPesagemComponent },
-  { path: 'listagem-suino', /*canActivate: [AuthGuard],*/ component: ListagemSuinoComponent },
+  { path: 'listagem-suino', canActivate: [AuthGuard], component: ListagemSuinoComponent },
   { path: 'listagem-pesos/:id', canActivate: [AuthGuard], component: ListagemPesosComponent },
   { path: 'edita/:id', canActivate: [AuthGuard], component: EditaSuinoComponent },
   { path: 'edita-pesagem/:id/:pesagemId', canActivate: [AuthGuard], component: EditaPesagemComponent },
