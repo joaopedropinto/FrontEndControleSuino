@@ -8,10 +8,13 @@
           <label for="earTag">
             Brinco do animal
             <input id="earTag" formControlName="earTag" type="number" />
-            <span *ngIf="!form.get('earTag')?.valid && form.get('earTag')?.touched">
-              Por favor, insira o brinco do animal ou brinco inserido já existe!
+            <span *ngIf="form.get('earTag')?.errors?.['required'] && form.get('earTag')?.touched">
+                Por favor, insira o brinco do animal!
             </span>
-          </label>
+            <span *ngIf="form.get('earTag')?.errors?.['earTagExists'] && form.get('earTag')?.touched">
+                O número de brinco já existe!
+            </span>
+          </label> 
           <label for="fatherEarTag">
             Brinco do pai
             <input id="fatherEarTag" formControlName="fatherEarTag" type="number" />
