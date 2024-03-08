@@ -1,5 +1,5 @@
 import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
-import { DataBaseService } from '../data-base.service';
+import { DataBaseService } from '../services/data-base.service';
 import { map } from 'rxjs/operators';
 
 export function earTagValidator(dataBaseService: DataBaseService): ValidatorFn {

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IWeight } from '../models/suino.model';
-import { PesagemService } from '../pesagem.service';
+import { PesagemService } from '../services/pesagem.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataBaseService } from '../data-base.service';
+import { DataBaseService } from '../services/data-base.service';
 
 @Component({
   selector: 'app-edita-pesagem',
