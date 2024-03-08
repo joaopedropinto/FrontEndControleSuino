@@ -90,4 +90,10 @@ export class DataBaseService {
   deletePesagemByID(idList: string, idItem: string) {
     return this.http.delete<IWeight>(`https://pururucasystem-default-rtdb.firebaseio.com/data/${idList}/pesagens/${idItem}.json`);
   }
+
+  checkEarTagExists(earTag: number): Observable<boolean> {
+    return this.getSuinos().pipe(
+      map(suinos => suinos.some(suino => suino.earTag === earTag))
+    );
+  }
 }
