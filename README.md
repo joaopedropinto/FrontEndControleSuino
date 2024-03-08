@@ -1,4 +1,4 @@
-## Pururca System
+## Pururuca System
 
 O objetivo deste projeto é implementar um sistema de gerenciamento e controle para criação de suínos, fornecendo todo o CRUD para cadastro de suínos, assim como o CRUD e dashboard das pesagens de cada suíno.
 
