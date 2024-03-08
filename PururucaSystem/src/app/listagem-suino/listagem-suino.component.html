@@ -1,0 +1,41 @@
+<div class="suinos-container">
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Brinco</th>
+            <th>Brinco do Pai</th>
+            <th>Brinco da Mãe</th>
+            <th>Data de Nascimento</th>
+            <th>Data da Saída</th>
+            <th>Status</th>
+            <th>Sexo</th>
+            <th>Detalhes</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="suino" *ngFor="let suino of suinos">
+            <td>{{ suino.earTag }}</td>
+            <td>{{ suino.fatherEarTag }}</td>
+            <td>{{ suino.motherEarTag }}</td>
+            <td>{{ suino.dateOfBirth }}</td>
+            <td>{{ suino.dateOfDeparture }}</td>
+            <td>{{ suino.status }}</td>
+            <td>{{ suino.gender === 'M' ? 'Macho' : 'Fêmea' }}</td>
+            <td class="details" [routerLink]="['/detalhes', suino.id]">
+              <i-feather name="file-minus"></i-feather>
+            </td>
+            <td class="edit" [routerLink]="['/edita', suino.id]">
+              <i-feather name="edit"></i-feather>
+            </td>
+            <td class="remove" (click)="removeSuino(suino)">
+              <i-feather name="trash"></i-feather>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
