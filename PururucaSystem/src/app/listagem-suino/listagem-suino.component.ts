@@ -10,12 +10,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./listagem-suino.component.scss']
 })
 export class ListagemSuinoComponent implements OnInit {
-  suinos: ISuino[] = [];
+  suinos: ISuino[] = []
+  filteredSuinos: ISuino[] = []
+  fatherEarTagFilter: string = ''
+  motherEarTagFilter: string = ''
+  dateOfBirthFilter: string = ''
+  dateOfDepartureFilter: string = ''
+  genderFilter: string = ''
+  statusFilter: string = ''
 
   constructor(private dataBaseService: DataBaseService, private router: Router) { }
 
   ngOnInit(): void {
-    this.fetchSuinos();
+    this.fetchSuinos()
   }
 
   fetchSuinos(): void {
@@ -23,6 +30,7 @@ export class ListagemSuinoComponent implements OnInit {
       .subscribe({
         next: (data: ISuino[]) => {
           this.suinos = data;
+          this.filteredSuinos = [...this.suinos]
         },
         error: (erro) => {
           console.error('Ocorreu um erro ao buscar os suínos:', erro);
@@ -47,5 +55,18 @@ export class ListagemSuinoComponent implements OnInit {
     } else {
       console.error('ID do suíno é indefinido.');
     }
+  }
+
+  applyFilters(): void {
+    this.filteredSuinos = this.suinos.filter(suino => {
+      return (!this.fatherEarTagFilter || suino.fatherEarTag.toString().includes(this.fatherEarTagFilter)) &&
+        (!this.motherEarTagFilter || suino.motherEarTag.toString().includes(this.motherEarTagFilter)) &&
+        (!this.dateOfBirthFilter || suino.dateOfBirth.includes(this.dateOfBirthFilter)) &&
+        (!this.dateOfDepartureFilter || suino.dateOfDeparture.includes(this.dateOfDepartureFilter)) &&
+        (!this.genderFilter || suino.gender === this.genderFilter) &&
+        (!this.statusFilter || suino.status === this.statusFilter);
+    });
+
+    console.log(this.filteredSuinos)
   }
 }
