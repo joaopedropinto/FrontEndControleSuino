@@ -13,7 +13,7 @@
         </thead>
         <tbody>
           <tr class="suino" *ngFor="let peso of pesos">
-            <td>{{ peso.weight }}</td>
+            <td>{{ peso.weight }} kg</td>
             <td>{{ peso.date }}</td>
             <td class="edit">
               <i-feather name="edit" [routerLink]="['/edita-pesagem', id, peso.id]"></i-feather>
