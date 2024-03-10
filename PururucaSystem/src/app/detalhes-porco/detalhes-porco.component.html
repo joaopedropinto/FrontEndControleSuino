@@ -1,0 +1,17 @@
+<div class="details">
+    <div class="details-container">
+        <div class="infos">
+            <h1>Detalhes do Suíno</h1>
+            <p>Brinco: {{ porco.earTag }}</p>
+            <p>Brinco do Pai: {{ porco.fatherEarTag }}</p>
+            <p>Brinco da mãe: {{ porco.motherEarTag }}</p>
+            <p>Data de nascimento: {{ porco.dateOfBirth | dateFormat }}</p>
+            <p>Data de saída: {{ porco.dateOfDeparture | dateFormat }}</p>
+            <p>Status: {{ porco.status }}</p>
+            <p *ngIf="porco.gender == 'M'">Gênero: Macho</p>
+            <p *ngIf="porco.gender == 'F'">Gênero: Fêmea</p>
+        </div>
+        <img *ngIf="porco.gender == 'M'" src="../../assets/images/male-pork.png" alt="" />
+        <img *ngIf="porco.gender == 'F'" src="../../assets/images/female-pork.png" alt="" />
+    </div>
+</div>
