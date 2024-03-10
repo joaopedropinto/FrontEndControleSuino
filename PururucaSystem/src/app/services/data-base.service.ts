@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { ISuino, IWeight } from '../app/models/suino.model';
+import { ISuino, IWeight } from '../models/suino.model';
+import { IContato } from '../models/contato.model';
 import { Observable, catchError, map, of } from 'rxjs';
 
 @Injectable({
@@ -95,5 +96,9 @@ export class DataBaseService {
     return this.getSuinos().pipe(
       map(suinos => suinos.some(suino => suino.earTag === earTag))
     );
+  }
+
+  enviarContato(contatoData: IContato): Observable<any> {
+    return this.http.post('https://pururucasystem-default-rtdb.firebaseio.com/contatos.json', contatoData);
   }
 }

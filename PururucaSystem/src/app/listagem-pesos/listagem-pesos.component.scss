@@ -55,12 +55,15 @@
 
         th {
             position: sticky;
+            
             top: 0;
             z-index: 5;
             padding: 1rem;
             text-align: center;
             font-size: 17px;
             font-weight: bold;
+
+            background-color: #3f3f3f;
         }
 
         td {

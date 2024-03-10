@@ -9,7 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { FeatherModule } from 'angular-feather';
-import { Trash, Edit, FileMinus, TrendingUp } from 'angular-feather/icons';
+import { Trash, Edit, FileMinus, TrendingUp, User, LogOut } from 'angular-feather/icons';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ListagemSuinoComponent } from './listagem-suino/listagem-suino.component';
@@ -22,6 +22,7 @@ import { EditaPesagemComponent } from './edita-pesagem/edita-pesagem.component';
 import { DateFormatPipe } from './pipes/date-format/date-format.pipe';
 import { AgePipe } from './pipes/age/age.pipe';
 import { DetalhesPorcoComponent } from './detalhes-porco/detalhes-porco.component';
+import { ContatoComponent } from './contato/contato.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'listagem-suino', canActivate: [AuthGuard], component: ListagemSuinoComponent },
   { path: 'listagem-pesos/:id', canActivate: [AuthGuard], component: ListagemPesosComponent },
   { path: 'edita/:id', canActivate: [AuthGuard], component: EditaSuinoComponent },
+  { path: 'contato', canActivate: [AuthGuard], component: ContatoComponent },
   { path: 'edita-pesagem/:id/:pesagemId', canActivate: [AuthGuard], component: EditaPesagemComponent },
 ];
 
@@ -39,7 +41,9 @@ const icons = {
   Trash,
   Edit,
   FileMinus,
-  TrendingUp
+  TrendingUp,
+  User,
+  LogOut
 };
 
 @NgModule({
@@ -56,7 +60,8 @@ const icons = {
     EditaPesagemComponent,
     DateFormatPipe,
     AgePipe,
-    DetalhesPorcoComponent
+    DetalhesPorcoComponent,
+    ContatoComponent
   ],
   imports: [
     BrowserModule,

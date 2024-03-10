@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DataBaseService } from '../data-base.service';
+import { DataBaseService } from '../services/data-base.service';
 import { IWeight } from '../models/suino.model';
-import { PesagemService } from '../pesagem.service';
+import { PesagemService } from '../services/pesagem.service';
 
 @Component({
   selector: 'app-cadastra-pesagem',

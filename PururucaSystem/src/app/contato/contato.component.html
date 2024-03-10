@@ -1,0 +1,37 @@
+<div class="contact-page">
+  <div class="contact-container">
+    <form id="form" (ngSubmit)="enviarContato()" [formGroup]="form" class="contact-form">
+      <h2>Entre em Contato</h2>
+      <br>
+      <div class="input-group">
+        <label for="nome">
+          Seu Nome
+          <input id="nome" formControlName="nome" type="text" />
+          <span *ngIf="!form.get('nome')?.valid && form.get('nome')?.touched">Por favor, insira seu nome!</span>
+        </label>
+      </div>
+      <div class="input-group">
+        <label for="email">
+          Seu E-mail
+          <input id="email" formControlName="email" type="email" />
+          <span *ngIf="!form.get('email')?.valid && form.get('email')?.touched">Por favor, insira um e-mail válido!</span>
+        </label>
+      </div>
+      <div class="input-group">
+        <label for="assunto">
+          Assunto
+          <input id="assunto" formControlName="assunto" type="text" />
+          <span *ngIf="!form.get('assunto')?.valid && form.get('assunto')?.touched">Por favor, insira o assunto!</span>
+        </label>
+      </div>
+      <div class="input-group">
+        <label for="mensagem">
+          Sua Mensagem
+          <textarea id="mensagem" formControlName="mensagem"></textarea>
+          <span *ngIf="!form.get('mensagem')?.valid && form.get('mensagem')?.touched">Por favor, insira sua mensagem!</span>
+        </label>
+      </div>
+      <button type="submit">Enviar Mensagem</button>
+    </form>
+  </div>
+</div>
