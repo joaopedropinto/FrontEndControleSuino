@@ -41,17 +41,19 @@ export class ListagemPesosComponent implements OnInit {
       data: {
         labels: this.arrayDatas,
         datasets: [{
-          label: 'Pesagens',
+          label: 'Pesagens em kg',
           data: this.arrayPesos,
           borderWidth: 1,
           borderColor: '#cdae73',
-          backgroundColor: '#cdae73'
+          backgroundColor: '#cdae73',
+          order: 1
         }, {
           type: 'line',
           label: '',
           data: this.arrayPesos,
           borderColor: '#7b7b7b',
-          backgroundColor: '#7b7b7b'
+          backgroundColor: '#7b7b7b',
+          order: 0
         }]
       },
       options: {
