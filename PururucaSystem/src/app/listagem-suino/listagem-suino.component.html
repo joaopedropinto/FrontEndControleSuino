@@ -1,0 +1,111 @@
+<div class="suinos-container">
+  <div class="filter-container">
+    <label for="fatherEarTagFilter"
+      >Filtrar por Brinco do Pai:
+      <input
+        type="number"
+        id="fatherEarTagFilter"
+        [(ngModel)]="fatherEarTagFilter"
+        (input)="applyFilters()"
+      />
+    </label>
+
+    <label for="motherEarTagFilter"
+      >Filtrar por Brinco da Mãe:
+      <input
+        type="number"
+        id="motherEarTagFilter"
+        [(ngModel)]="motherEarTagFilter"
+        (input)="applyFilters()"
+      />
+    </label>
+
+    <label for="dateOfBirthFilter"
+      >Filtrar por Data de Nascimento:
+      <input
+        type="date"
+        id="dateOfBirthFilter"
+        [(ngModel)]="dateOfBirthFilter"
+        (change)="applyFilters()"
+      />
+    </label>
+
+    <label for="dateOfDepartureFilter"
+      >Filtrar por Data de Saída:<input
+        type="date"
+        id="dateOfDepartureFilter"
+        [(ngModel)]="dateOfDepartureFilter"
+        (change)="applyFilters()"
+      />
+    </label>
+
+    <label for="genderFilter"
+      >Filtrar por Sexo:
+      <select
+        id="genderFilter"
+        [(ngModel)]="genderFilter"
+        (change)="applyFilters()"
+      >
+        <option value="">Todos</option>
+        <option value="M">Macho</option>
+        <option value="F">Fêmea</option>
+      </select>
+    </label>
+
+    <label for="statusFilter"
+      >Filtrar por Status:
+      <select
+        id="statusFilter"
+        [(ngModel)]="statusFilter"
+        (change)="applyFilters()"
+      >
+        <option value="">Todos</option>
+        <option value="Ativo">Ativo</option>
+        <option value="Vendido">Vendido</option>
+        <option value="Morto">Morto</option>
+      </select>
+    </label>
+  </div>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Brinco</th>
+          <th>Brinco do Pai</th>
+          <th>Brinco da Mãe</th>
+          <th>Idade</th>
+          <th>Data da Saída</th>
+          <th>Status</th>
+          <th>Sexo</th>
+          <th>Histórico de pesagem</th>
+          <th>Detalhes</th>
+          <th>Editar</th>
+          <th>Excluir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="suino" *ngFor="let suino of filteredSuinos">
+          <td>{{ suino.earTag }}</td>
+          <td>{{ suino.fatherEarTag }}</td>
+          <td>{{ suino.motherEarTag }}</td>
+          <td>{{ suino.dateOfBirth | age }} anos</td>
+          <td>{{ suino.dateOfDeparture | dateFormat }}</td>
+          <td>{{ suino.status }}</td>
+          <td>{{ suino.gender === "M" ? "Macho" : "Fêmea" }}</td>
+          <td class="weighing" [routerLink]="['/listagem-pesos', suino.id]">
+            <i-feather name="trending-up"></i-feather>
+          </td>
+          <td class="details" [routerLink]="['/detalhes', suino.id]">
+            <i-feather name="file-minus"></i-feather>
+          </td>
+          <td class="edit" [routerLink]="['/edita', suino.id]">
+            <i-feather name="edit"></i-feather>
+          </td>
+          <td class="remove" (click)="removeSuino(suino)">
+            <i-feather name="trash"></i-feather>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="header">
+  <img
+    src="../../assets/images/PururucaLogo.png"
+    alt="image-de-porco"
+    routerLink="/"
+  />
+  <nav class="nav-links">
+    <a routerLink="/" routerLinkActive="active">Home</a>
+    <a routerLink="/casdastro-suino" routerLinkActive="active"
+      >Cadastrar Suíno</a
+    >
+    <a routerLink="/listagem-suino" routerLinkActive="active">Suinos</a>
+    <a routerLink="/contato" routerLinkActive="active">Contato</a>
+    <a routerLink="/login" routerLinkActive="active"><i-feather name="user"></i-feather></a>
+    <a (click)="logout()" class="cursor-pointer"><i-feather name="log-out"></i-feather></a>
+  </nav>
+</div>

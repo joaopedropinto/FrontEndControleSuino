@@ -1,0 +1,67 @@
+<div class="edit">
+    <div class="form-container">
+        <h2>Editar Suíno</h2>
+        <br>
+        <form id="form" (ngSubmit)="saveSuino()" [formGroup]="form">
+            <div class="input-group">
+                <label for="earTag">
+                    Brinco do suíno
+                    <input id="earTag" formControlName="earTag" type="number" />
+                    <span *ngIf="!form.get('earTag')?.valid && form.get('earTag')?.touched">
+                        Por favor, insira o brinco do suíno!
+                    </span>
+                </label>
+                <label for="fatherEarTag">
+                    Brinco do pai
+                    <input id="fatherEarTag" formControlName="fatherEarTag" type="number" />
+                    <span *ngIf="!form.get('fatherEarTag')?.valid && form.get('fatherEarTag')?.touched">
+                        Por favor, insira o brinco do pai!
+                    </span>
+                </label>
+            </div>
+            <div class="input-group">
+                <label for="motherEarTag">
+                    Brinco da mãe
+                    <input id="motherEarTag" formControlName="motherEarTag" type="number" />
+                    <span *ngIf="!form.get('motherEarTag')?.valid && form.get('motherEarTag')?.touched">
+                        Por favor, insira o brinco da mãe!
+                    </span>
+                </label>
+                <label for="dateOfBirth">
+                    Data de nascimento
+                    <input id="dateOfBirth" formControlName="dateOfBirth" type="date" />
+                    <span *ngIf="!form.get('dateOfBirth')?.valid && form.get('dateOfBirth')?.touched">
+                        Por favor, insira a data de nascimento do suíno!
+                    </span>
+                </label>
+            </div>
+            <div class="input-group">
+                <label for="dateOfDeparture">
+                    Data da saída
+                    <input id="dateOfDeparture" formControlName="dateOfDeparture" type="date" />
+                    <span *ngIf="!form.get('dateOfDeparture')?.valid && form.get('dateOfDeparture')?.touched">
+                        Por favor, insira a data de saída do suíno!
+                    </span>
+                </label>
+                <label for="status">
+                    Status
+                    <select id="status" formControlName="status">
+                        <option value="Ativo">Ativo</option>
+                        <option value="Vendido">Vendido</option>
+                        <option value="Morto">Morto</option>
+                    </select>
+                </label>
+            </div>
+            <div class="input-group">
+                <label for="gender">
+                    Sexo
+                    <select id="gender" formControlName="gender">
+                        <option value="M">Macho</option>
+                        <option value="F">Fêmea</option>
+                    </select>
+                </label>
+            </div>
+            <button type="submit">Salvar</button>
+        </form>
+    </div>
+</div>

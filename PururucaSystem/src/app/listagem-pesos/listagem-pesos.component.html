@@ -1,0 +1,35 @@
+<div class="pesos-container">
+  <div class="pesagens-container">
+    <button [routerLink]="['/cadastro-peso', id]">Adicionar pesagem</button>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Peso</th>
+            <th>Data da Pesagem</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="suino" *ngFor="let peso of pesos">
+            <td>{{ peso.weight }} kg</td>
+            <td>{{ peso.date }}</td>
+            <td class="edit">
+              <i-feather name="edit" [routerLink]="['/edita-pesagem', id, peso.id]"></i-feather>
+            </td>
+            <td class="remove" (click)="deletePesagemByID(id, peso.id)">
+              <i-feather name="trash"></i-feather>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="chart-container">
+    <h1>Dashboard de pesagem</h1>
+    <div id="chart">
+      <canvas id="ctx"></canvas>
+    </div>
+  </div>
+</div>
