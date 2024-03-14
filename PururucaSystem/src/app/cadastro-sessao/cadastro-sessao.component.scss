@@ -1,0 +1,110 @@
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 80vh;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 4px 0px #aaa;
+    border-radius: 15px;
+    width: 55%;
+    padding: 30px;
+    background-color: #fff;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+}
+
+.form-container form .input-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-container form label {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    gap: 5px;
+}
+
+.form-container form label input,
+.form-container form label select {
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+    width: 100%;
+}
+
+.form-container form label span {
+    font-size: 12px;
+    font-weight: bold;
+    color: #e25a57;
+    margin-top: 10px;
+}
+
+.form-container form button {
+    width: 100%;
+    padding: 13px 90px;
+    font-size: 21px;
+    border-radius: 30px;
+    border: none;
+    background-color: #cdae73;
+    box-shadow: 0px 0px 4px 0px #3f3f3f;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form-container form button:hover {
+    background-color: #3f3f3f;
+}
+
+.input-group select[multiple] {
+    height: auto;
+    min-height: 100px;
+    width: 100%;
+}
+
+.input-group select[multiple] option {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.input-group select[multiple] option:last-child {
+    border-bottom: none;
+}
+
+.input-group select[multiple] option input[type="checkbox"] {
+    display: none;
+}
+
+.input-group select[multiple] option input[type="checkbox"] + label {
+    display: inline-block;
+    padding-left: 5px;
+}
+
+.input-group select[multiple] option input[type="checkbox"]:checked + label {
+    background-color: #cdae73;
+    color: #fff;
+}
+
+.input-group select[multiple] option input[type="checkbox"] + label:before {
+    content: '\2610';
+    margin-right: 5px;
+}
+
+.input-group select[multiple] option input[type="checkbox"]:checked + label:before {
+    content: '\2611';
+}

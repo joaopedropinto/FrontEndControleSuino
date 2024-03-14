@@ -23,11 +23,13 @@ import { DateFormatPipe } from './pipes/date-format/date-format.pipe';
 import { AgePipe } from './pipes/age/age.pipe';
 import { DetalhesPorcoComponent } from './detalhes-porco/detalhes-porco.component';
 import { ContatoComponent } from './contato/contato.component';
+import { CadastroSessaoComponent } from './cadastro-sessao/cadastro-sessao.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'casdastro-suino', canActivate: [AuthGuard], component: CadastroSuinoComponent },
+  { path: 'casdastro-sessao', canActivate: [AuthGuard], component: CadastroSessaoComponent },
   { path: 'detalhes/:id', canActivate: [AuthGuard], component: DetalhesPorcoComponent },
   { path: 'cadastro-peso/:id', canActivate: [AuthGuard], component: CadastraPesagemComponent },
   { path: 'listagem-suino', canActivate: [AuthGuard], component: ListagemSuinoComponent },
@@ -61,7 +63,8 @@ const icons = {
     DateFormatPipe,
     AgePipe,
     DetalhesPorcoComponent,
-    ContatoComponent
+    ContatoComponent,
+    CadastroSessaoComponent
   ],
   imports: [
     BrowserModule,

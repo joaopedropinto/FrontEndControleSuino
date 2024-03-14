@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { ISuino, IWeight } from '../models/suino.model';
 import { IContato } from '../models/contato.model';
+import { ISession } from '../models/session.model';
 import { Observable, catchError, map, of } from 'rxjs';
 
 @Injectable({
@@ -100,5 +101,40 @@ export class DataBaseService {
 
   enviarContato(contatoData: IContato): Observable<any> {
     return this.http.post('https://pururucasystem-default-rtdb.firebaseio.com/contatos.json', contatoData);
+  }
+
+  addSession(sessionData: ISession): Observable<any> {
+    return this.http.post('https://pururucasystem-default-rtdb.firebaseio.com/sessions.json', sessionData);
+  }
+
+  getSessions(): Observable<ISession[]> {
+    return this.http.get<{ [key: string]: ISession }>('https://pururucasystem-default-rtdb.firebaseio.com/sessions.json',
+      {
+        params: new HttpParams().set('print', 'pretty')
+      }
+    )
+      .pipe(
+        map((responseData) => {
+          const sessionArray: ISession[] = [];
+          for (const key in responseData) {
+            if ((responseData).hasOwnProperty(key)) {
+              sessionArray.push({ ...(responseData as any)[key], id: key });
+            }
+          }
+          return sessionArray;
+        })
+      );
+  }
+
+  deleteSession(id: string): Observable<any> {
+    return this.http.delete(`https://pururucasystem-default-rtdb.firebaseio.com/sessions/${id}.json`);
+  }
+
+  getSession(id: string): Observable<ISession> {
+    return this.http.get<ISession>(`https://pururucasystem-default-rtdb.firebaseio.com/sessions/${id}.json`);
+  }
+
+  updateSession(id: string, sessionData: ISession): Observable<any> {
+    return this.http.put(`https://pururucasystem-default-rtdb.firebaseio.com/sessions/${id}.json`, sessionData, { observe: 'response' });
   }
 }
