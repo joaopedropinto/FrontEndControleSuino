@@ -22,7 +22,7 @@
                 <label for="animalTags">
                     Brincos dos Animais
                     <select id="animalTags" formControlName="animalTags" multiple>
-                        <option *ngFor="let porco of porcos" [value]="porco">{{ porco }}</option>
+                        <option *ngFor="let pigTag of pigTags" [value]="pigTag">{{ pigTag }}</option>
                     </select>
                     <span *ngIf="!form.get('animalTags')?.valid && form.get('animalTags')?.touched">
                         Por favor, selecione os brincos dos animais!
@@ -41,21 +41,21 @@
                         Por favor, selecione as atividades planejadas para esta sessão!
                     </span>
                 </label>
-                </div>
-                <div *ngIf="showVaccines" class="input-group">
-                    <label for="vaccines">
-                        Tipo de Vacina
-                        <select id="vaccines" formControlName="vaccines" multiple>
-                            <option value="Vacina para Gripe Suína">Vacina para Gripe Suína</option>
-                            <option value="Vacina contra Peste Suína">Vacina contra Peste Suína</option>
-                            <option value="Vacina contra Circovirose">Vacina contra Circovirose</option>
-                            <option value="Vacina contra Parvovirose">Vacina contra Parvovirose</option>
-                            <option value="Vacina contra Erisipela">Vacina contra Erisipela</option>
-                        </select>
-                        <span *ngIf="!form.get('vaccines')?.valid && form.get('vaccines')?.touched">
-                            Por favor, selecione os tipos de vacina!
-                        </span>
-                    </label>
+            </div>
+            <div *ngIf="displayVaccines" class="input-group">
+                <label for="vaccines">
+                    Tipo de Vacina
+                    <select id="vaccines" formControlName="vaccines" multiple>
+                        <option value="Vacina para Gripe Suína">Vacina para Gripe Suína</option>
+                        <option value="Vacina contra Peste Suína">Vacina contra Peste Suína</option>
+                        <option value="Vacina contra Circovirose">Vacina contra Circovirose</option>
+                        <option value="Vacina contra Parvovirose">Vacina contra Parvovirose</option>
+                        <option value="Vacina contra Erisipela">Vacina contra Erisipela</option>
+                    </select>
+                    <span *ngIf="!form.get('vaccines')?.valid && form.get('vaccines')?.touched">
+                        Por favor, selecione os tipos de vacina!
+                    </span>
+                </label>
             </div>
             <button type="submit">Registrar Sessão</button>
         </form>
