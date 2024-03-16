@@ -11,8 +11,8 @@ import { ISuino } from '../models/suino.model';
 })
 export class CadastroSessaoComponent implements OnInit {
   form!: FormGroup;
-  porcos: string[] = [];
-  showVaccines: boolean = false; 
+  pigTags: string[] = [];
+  displayVaccines: boolean = false; 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,13 +29,13 @@ export class CadastroSessaoComponent implements OnInit {
       vaccines: ['', Validators.required] 
     });
 
-    this.fetchSuinos();
+    this.fetchPigTags();
   }
 
-  fetchSuinos(): void {
+  fetchPigTags(): void {
     this.dataBaseService.getSuinos().subscribe({
       next: (suinos: ISuino[]) => {
-        this.porcos = suinos.map(suino => suino.earTag.toString());
+        this.pigTags = suinos.map(suino => suino.earTag.toString());
       },
       error: (error) => {
         console.error('Erro ao buscar a lista de suínos:', error);
@@ -63,6 +63,6 @@ export class CadastroSessaoComponent implements OnInit {
   
   toggleVaccines(): void {
     const plannedActivities = this.form.get('plannedActivities')?.value;
-    this.showVaccines = plannedActivities === 'Vacinação';
+    this.displayVaccines = plannedActivities === 'Vacinação';
   }
 }
