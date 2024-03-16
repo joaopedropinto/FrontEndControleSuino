@@ -12,8 +12,7 @@ import { ISuino } from '../models/suino.model';
 export class CadastroSessaoComponent implements OnInit {
   form!: FormGroup;
   porcos: string[] = [];
-  vacinasPorco: string[] = ['Raiva', 'Renite atrófica']; // exemplo de definição das vacinas
-  showVaccines: boolean = false; // Propriedade para controlar a visibilidade do campo de vacinas
+  showVaccines: boolean = false; 
 
   constructor(
     private formBuilder: FormBuilder,
