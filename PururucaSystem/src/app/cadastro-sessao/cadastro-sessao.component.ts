@@ -61,8 +61,7 @@ export class CadastroSessaoComponent implements OnInit {
       alert('Por favor, preencha todos os campos obrigatórios corretamente.');
     }
   }
-
-  // Função para controlar a visibilidade do campo de vacinas
+  
   toggleVaccines(): void {
     const plannedActivities = this.form.get('plannedActivities')?.value;
     this.showVaccines = plannedActivities === 'Vacinação';
