@@ -1,8 +1,6 @@
 <div class="register">
     <div class="form-container">
         <h2>Formulário de Registro de Sessão</h2>
-        <br>
-        <br>
         <form id="form" (ngSubmit)="addSession()" [formGroup]="form">
             <div class="input-group">
                 <label for="sessionDate">
@@ -32,44 +30,35 @@
                 </label>
                 <label for="plannedActivities">
                     Atividades Planejadas
-                    <select id="plannedActivities" formControlName="plannedActivities">
+                    <select id="plannedActivities" formControlName="plannedActivities" (change)="toggleVaccines()">
                         <option value="Vacinação">Vacinação</option>
                         <option value="Alimentação especial">Alimentação especial</option>
                         <option value="Exame de saúde">Exame de saúde</option>
                         <option value="Limpeza do ambiente">Limpeza do ambiente</option>
                         <option value="Manejo reprodutivo">Manejo reprodutivo</option>
-                        <!-- Adicione mais opções conforme necessário -->
                     </select>
                     <span *ngIf="!form.get('plannedActivities')?.valid && form.get('plannedActivities')?.touched">
                         Por favor, selecione as atividades planejadas para esta sessão!
                     </span>
                 </label>
+                <!-- Campo de seleção para vacinas -->
+                
+                </div>
+                <div *ngIf="showVaccines" class="input-group">
+                    <label for="vaccines">
+                        Tipo de Vacina
+                        <select id="vaccines" formControlName="vaccines" multiple>
+                            <option value="Vacina para Gripe Suína">Vacina para Gripe Suína</option>
+                            <option value="Vacina contra Peste Suína">Vacina contra Peste Suína</option>
+                            <option value="Vacina contra Circovirose">Vacina contra Circovirose</option>
+                            <option value="Vacina contra Parvovirose">Vacina contra Parvovirose</option>
+                            <option value="Vacina contra Erisipela">Vacina contra Erisipela</option>
+                        </select>
+                        <span *ngIf="!form.get('vaccines')?.valid && form.get('vaccines')?.touched">
+                            Por favor, selecione os tipos de vacina!
+                        </span>
+                    </label>
             </div>
-            <div *ngIf="form.get('plannedActivities')?.value === 'Vacinação'">
-                <h3>Vacinação dos Porcos</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Número do Brinco</th>
-                            <th>Raiva</th>
-                            <th>Renite atrófica</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let porco of form.get('animalTags')?.value">
-                            <td>{{ porco }}</td>
-                            <td>
-                                <input type="checkbox" formControlName="vacinaRaiva_{{ porco }}" [value]="true">
-                            </td>
-                            <td>
-                                <input type="checkbox" formControlName="vacinaRenite_{{ porco }}" [value]="true">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            
             <button type="submit">Registrar Sessão</button>
         </form>
     </div>

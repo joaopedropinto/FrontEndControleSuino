@@ -13,6 +13,7 @@ export class CadastroSessaoComponent implements OnInit {
   form!: FormGroup;
   porcos: string[] = [];
   vacinasPorco: string[] = ['Raiva', 'Renite atrófica']; // exemplo de definição das vacinas
+  showVaccines: boolean = false; // Propriedade para controlar a visibilidade do campo de vacinas
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,7 +26,8 @@ export class CadastroSessaoComponent implements OnInit {
       sessionDate: ['', Validators.required], 
       sessionDescription: ['', Validators.required], 
       animalTags: ['', Validators.required], 
-      plannedActivities: ['', Validators.required]
+      plannedActivities: ['', Validators.required],
+      vaccines: ['', Validators.required] 
     });
 
     this.fetchSuinos();
@@ -48,7 +50,6 @@ export class CadastroSessaoComponent implements OnInit {
         next: () => {
           console.log('Sessão registrada com sucesso!');
           alert('Sessão registrada com sucesso!');
-          this.router.navigate(['listagem-sessao']);
           this.form.reset(); 
         },
         error: (error) => {
@@ -59,5 +60,11 @@ export class CadastroSessaoComponent implements OnInit {
     } else {
       alert('Por favor, preencha todos os campos obrigatórios corretamente.');
     }
+  }
+
+  // Função para controlar a visibilidade do campo de vacinas
+  toggleVaccines(): void {
+    const plannedActivities = this.form.get('plannedActivities')?.value;
+    this.showVaccines = plannedActivities === 'Vacinação';
   }
 }
