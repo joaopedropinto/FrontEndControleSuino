@@ -1,0 +1,65 @@
+<div class="register">
+    <div class="form-container">
+        <h2>Formulário de Registro de Sessão</h2>
+        <form id="form" (ngSubmit)="addSession()" [formGroup]="form">
+            <div class="input-group">
+                <label for="sessionDate">
+                    Data da Sessão
+                    <input id="sessionDate" formControlName="sessionDate" type="date" />
+                    <span *ngIf="!form.get('sessionDate')?.valid && form.get('sessionDate')?.touched">
+                        Por favor, insira a data da sessão!
+                    </span>
+                </label>
+                <label for="sessionDescription">
+                    Descrição da Sessão
+                    <input id="sessionDescription" formControlName="sessionDescription" type="text" />
+                    <span *ngIf="!form.get('sessionDescription')?.valid && form.get('sessionDescription')?.touched">
+                        Por favor, insira a descrição da sessão!
+                    </span>
+                </label>
+            </div>
+            <div class="input-group">
+                <label for="animalTags">
+                    Brincos dos Animais
+                    <select id="animalTags" formControlName="animalTags" multiple>
+                        <option *ngFor="let porco of porcos" [value]="porco">{{ porco }}</option>
+                    </select>
+                    <span *ngIf="!form.get('animalTags')?.valid && form.get('animalTags')?.touched">
+                        Por favor, selecione os brincos dos animais!
+                    </span>
+                </label>
+                <label for="plannedActivities">
+                    Atividades Planejadas
+                    <select id="plannedActivities" formControlName="plannedActivities" (change)="toggleVaccines()">
+                        <option value="Vacinação">Vacinação</option>
+                        <option value="Alimentação especial">Alimentação especial</option>
+                        <option value="Exame de saúde">Exame de saúde</option>
+                        <option value="Limpeza do ambiente">Limpeza do ambiente</option>
+                        <option value="Manejo reprodutivo">Manejo reprodutivo</option>
+                    </select>
+                    <span *ngIf="!form.get('plannedActivities')?.valid && form.get('plannedActivities')?.touched">
+                        Por favor, selecione as atividades planejadas para esta sessão!
+                    </span>
+                </label>
+                <!-- Campo de seleção para vacinas -->
+                
+                </div>
+                <div *ngIf="showVaccines" class="input-group">
+                    <label for="vaccines">
+                        Tipo de Vacina
+                        <select id="vaccines" formControlName="vaccines" multiple>
+                            <option value="Vacina para Gripe Suína">Vacina para Gripe Suína</option>
+                            <option value="Vacina contra Peste Suína">Vacina contra Peste Suína</option>
+                            <option value="Vacina contra Circovirose">Vacina contra Circovirose</option>
+                            <option value="Vacina contra Parvovirose">Vacina contra Parvovirose</option>
+                            <option value="Vacina contra Erisipela">Vacina contra Erisipela</option>
+                        </select>
+                        <span *ngIf="!form.get('vaccines')?.valid && form.get('vaccines')?.touched">
+                            Por favor, selecione os tipos de vacina!
+                        </span>
+                    </label>
+            </div>
+            <button type="submit">Registrar Sessão</button>
+        </form>
+    </div>
+</div>
