@@ -2,7 +2,7 @@ export interface ISession {
     id?: string;
     sessionDate: string;
     sessionDescription: string;
-    animalTags: string[]; 
+    animalTags: string[];
     plannedActivities: string;
-    vaccines: string[]; 
+    vaccines?: string[];
 }

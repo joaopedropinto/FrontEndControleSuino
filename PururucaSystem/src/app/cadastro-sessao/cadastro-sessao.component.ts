@@ -12,7 +12,7 @@ import { ISuino } from '../models/suino.model';
 export class CadastroSessaoComponent implements OnInit {
   form!: FormGroup;
   pigTags: string[] = [];
-  displayVaccines: boolean = false; 
+  displayVaccines: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,11 +22,11 @@ export class CadastroSessaoComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      sessionDate: ['', Validators.required], 
-      sessionDescription: ['', Validators.required], 
-      animalTags: ['', Validators.required], 
+      sessionDate: ['', Validators.required],
+      sessionDescription: ['', Validators.required],
+      animalTags: ['', Validators.required],
       plannedActivities: ['', Validators.required],
-      vaccines: ['', Validators.required] 
+      vaccines: ['']
     });
 
     this.fetchPigTags();
@@ -49,7 +49,7 @@ export class CadastroSessaoComponent implements OnInit {
         next: () => {
           console.log('Sessão registrada com sucesso!');
           alert('Sessão registrada com sucesso!');
-          this.form.reset(); 
+          this.form.reset();
         },
         error: (error) => {
           console.error('Erro ao cadastrar sessão:', error);
@@ -60,7 +60,7 @@ export class CadastroSessaoComponent implements OnInit {
       alert('Por favor, preencha todos os campos obrigatórios corretamente.');
     }
   }
-  
+
   toggleVaccines(): void {
     const plannedActivities = this.form.get('plannedActivities')?.value;
     this.displayVaccines = plannedActivities === 'Vacinação';
