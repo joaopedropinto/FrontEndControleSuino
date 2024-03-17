@@ -24,6 +24,7 @@ import { AgePipe } from './pipes/age/age.pipe';
 import { DetalhesPorcoComponent } from './detalhes-porco/detalhes-porco.component';
 import { ContatoComponent } from './contato/contato.component';
 import { CadastroSessaoComponent } from './cadastro-sessao/cadastro-sessao.component';
+import { DetalhesSessaoComponent } from './detalhes-sessao/detalhes-sessao.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'edita/:id', canActivate: [AuthGuard], component: EditaSuinoComponent },
   { path: 'contato', canActivate: [AuthGuard], component: ContatoComponent },
   { path: 'edita-pesagem/:id/:pesagemId', canActivate: [AuthGuard], component: EditaPesagemComponent },
+  { path: 'detalhes-sessao/:id', component: DetalhesSessaoComponent },
 ];
 
 const icons = {
@@ -64,7 +66,8 @@ const icons = {
     AgePipe,
     DetalhesPorcoComponent,
     ContatoComponent,
-    CadastroSessaoComponent
+    CadastroSessaoComponent,
+    DetalhesSessaoComponent
   ],
   imports: [
     BrowserModule,
