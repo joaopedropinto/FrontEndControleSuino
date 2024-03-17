@@ -1,0 +1,18 @@
+<div class="details">
+    <div class="details-container">
+        <div class="infos">
+            <h1>Detalhes da Sessão</h1>
+            <p>Data da sessão: {{ session.sessionDate | dateFormat }}</p>
+            <p>Detalhes da sessão: {{ session.sessionDescription }}</p>
+            <p>Brincos dos porcos:</p>
+            <ul>
+                <li *ngFor="let tag of session.animalTags">{{ tag }}</li>
+            </ul>
+            <p>Atividades planejadas: {{ session.plannedActivities }}</p>
+            <ul *ngIf="plannedActivities == 'Vacinação'">
+                <li *ngFor="let vacina of session.vaccines">Vacinas: {{ session.vaccines }}</li>
+            </ul>
+        </div>
+        
+    </div>
+</div>
