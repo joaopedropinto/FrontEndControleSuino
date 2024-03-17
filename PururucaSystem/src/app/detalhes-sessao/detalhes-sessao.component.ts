@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './detalhes-sessao.component.html',
   styleUrl: './detalhes-sessao.component.scss'
 })
-export class DetalhesSessionComponent {
+export class DetalhesSessaoComponent {
   session!: ISession
 
   constructor(private dataBaseService: DataBaseService, private routes: Router, private route: ActivatedRoute) { }

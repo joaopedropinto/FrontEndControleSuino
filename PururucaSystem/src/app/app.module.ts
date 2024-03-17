@@ -38,6 +38,7 @@ const routes: Routes = [
   { path: 'edita/:id', canActivate: [AuthGuard], component: EditaSuinoComponent },
   { path: 'contato', canActivate: [AuthGuard], component: ContatoComponent },
   { path: 'edita-pesagem/:id/:pesagemId', canActivate: [AuthGuard], component: EditaPesagemComponent },
+  { path: 'detalhes-sessao/:id', component: DetalhesSessaoComponent },
 ];
 
 const icons = {

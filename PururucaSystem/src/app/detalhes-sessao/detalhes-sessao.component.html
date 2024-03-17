@@ -4,14 +4,15 @@
             <h1>Detalhes da Sessão</h1>
             <p>Data da sessão: {{ session.sessionDate | dateFormat }}</p>
             <p>Detalhes da sessão: {{ session.sessionDescription }}</p>
-            <p>Brincos dos porcos:</p>
-            <ul>
+            <p>Brincos dos porcos: {{ session.animalTags }}</p>
+            <!-- <ul>
                 <li *ngFor="let tag of session.animalTags">{{ tag }}</li>
-            </ul>
+            </ul> -->
             <p>Atividades planejadas: {{ session.plannedActivities }}</p>
-            <ul *ngIf="plannedActivities == 'Vacinação'">
-                <li *ngFor="let vacina of session.vaccines">Vacinas: {{ session.vaccines }}</li>
-            </ul>
+            <!-- <ul *ngIf="session.plannedActivities == 'Vacinação'">
+                <li *ngFor="let vacina of session.vaccines">{{ vacina }}</li>
+            </ul> -->
+            <p *ngIf="session.plannedActivities == 'Vacinação'">Vacinas: {{ session.vaccines }}</p>
         </div>
         
     </div>
