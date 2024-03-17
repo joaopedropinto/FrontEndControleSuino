@@ -25,6 +25,7 @@ import { DetalhesPorcoComponent } from './detalhes-porco/detalhes-porco.componen
 import { ContatoComponent } from './contato/contato.component';
 import { CadastroSessaoComponent } from './cadastro-sessao/cadastro-sessao.component';
 import { SessaoComponent } from './sessao/sessao.component';
+import { DetalhesSessaoComponent } from './detalhes-sessao/detalhes-sessao.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'contato', canActivate: [AuthGuard], component: ContatoComponent },
   { path: 'sessao', canActivate: [AuthGuard], component: SessaoComponent },
   { path: 'edita-pesagem/:id/:pesagemId', canActivate: [AuthGuard], component: EditaPesagemComponent },
+  { path: 'detalhes-sessao/:id', component: DetalhesSessaoComponent },
 ];
 
 const icons = {
@@ -69,6 +71,7 @@ const icons = {
     ContatoComponent,
     CadastroSessaoComponent,
     SessaoComponent
+    DetalhesSessaoComponent
   ],
   imports: [
     BrowserModule,
