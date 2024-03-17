@@ -1,0 +1,63 @@
+<div class="suinos-container">
+  <div class="filter-container">
+    <label for="sessionDate"
+      >Filtrar por Data da Sessão:
+      <input
+        type="date"
+        id="sessionDate"
+        [(ngModel)]="sessionDate"
+        (change)="applyFilters()"
+      />
+    </label>
+
+    <label for="plannedActivities"
+      >Filtrar por Atividade Planejada:
+      <select
+        id="plannedActivities"
+        [(ngModel)]="plannedActivities"
+        (change)="applyFilters()"
+      >
+      <option value="">Todos</option>
+        <option value="Vacinação">Vacinação</option>
+        <option value="Alimentação especial">Alimentação especial</option>
+        <option value="Exame de saúde">Exame de saúde</option>
+        <option value="Limpeza do ambiente">Limpeza do ambiente</option>
+        <option value="Manejo reprodutivo">Manejo reprodutivo</option>
+      </select>
+    </label>
+  </div>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Data da Sessão</th>
+          <th>Descrição</th>
+          <th>Atividade Planejada</th>
+          <th>Detalhes</th>
+          <th>Abrir Sessão</th>
+          <th>Editar</th>
+          <th>Excluir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="sessão" *ngFor="let session of filteredSessions">
+          <td>{{ session.sessionDate }}</td>
+          <td>{{ session.sessionDescription }}</td>
+          <td>{{ session.plannedActivities }}</td>
+          <td class="details" [routerLink]="['/detalhes', session.id]">
+            <i-feather name="file-minus"></i-feather>
+          </td>
+          <td class="session" [routerLink]="['/casdastro-sessao']">
+            <i-feather name="clipboard"></i-feather>
+          </td>
+          <td class="edit" [routerLink]="['/edita', session.id]">
+            <i-feather name="edit"></i-feather>
+          </td>
+          <td class="remove" (click)="removeSuino(session)">
+            <i-feather name="trash"></i-feather>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
