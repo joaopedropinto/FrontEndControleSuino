@@ -9,7 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { FeatherModule } from 'angular-feather';
-import { Trash, Edit, FileMinus, TrendingUp, User, LogOut } from 'angular-feather/icons';
+import { Trash, Edit, FileMinus, TrendingUp, User, Clipboard, LogOut } from 'angular-feather/icons';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ListagemSuinoComponent } from './listagem-suino/listagem-suino.component';
@@ -24,6 +24,7 @@ import { AgePipe } from './pipes/age/age.pipe';
 import { DetalhesPorcoComponent } from './detalhes-porco/detalhes-porco.component';
 import { ContatoComponent } from './contato/contato.component';
 import { CadastroSessaoComponent } from './cadastro-sessao/cadastro-sessao.component';
+import { SessaoComponent } from './sessao/sessao.component';
 import { DetalhesSessaoComponent } from './detalhes-sessao/detalhes-sessao.component';
 
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'listagem-pesos/:id', canActivate: [AuthGuard], component: ListagemPesosComponent },
   { path: 'edita/:id', canActivate: [AuthGuard], component: EditaSuinoComponent },
   { path: 'contato', canActivate: [AuthGuard], component: ContatoComponent },
+  { path: 'sessao', canActivate: [AuthGuard], component: SessaoComponent },
   { path: 'edita-pesagem/:id/:pesagemId', canActivate: [AuthGuard], component: EditaPesagemComponent },
   { path: 'detalhes-sessao/:id', component: DetalhesSessaoComponent },
 ];
@@ -47,6 +49,7 @@ const icons = {
   FileMinus,
   TrendingUp,
   User,
+  Clipboard,
   LogOut
 };
 
@@ -67,6 +70,7 @@ const icons = {
     DetalhesPorcoComponent,
     ContatoComponent,
     CadastroSessaoComponent,
+    SessaoComponent
     DetalhesSessaoComponent
   ],
   imports: [
