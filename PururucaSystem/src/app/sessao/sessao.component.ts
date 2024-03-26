@@ -1,66 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { ISession } from '../models/session.model';
+import { ISession, ISuinoActivity } from '../models/session.model';
 import { DataBaseService } from '../services/data-base.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sessao',
   templateUrl: './sessao.component.html',
-  styleUrl: './sessao.component.scss',
+  styleUrls: ['./sessao.component.scss']
 })
 export class SessaoComponent implements OnInit {
-  sections: ISession[] = [];
-  filteredSessions: ISession[] = [];
-  sessionDate: string = '';
-  sessionDescription: string = '';
-  plannedActivities: string = '';
+  session!: ISession;
+  suinoActivities!: ISuinoActivity[];
 
-  constructor(
-    private dataBaseService: DataBaseService,
-    private router: Router
-  ) {}
+  constructor(private dataBaseService: DataBaseService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.fetchSessions();
-  }
+    const sessionId = this.route.snapshot.paramMap.get('id');
 
-  fetchSessions(): void {
-    this.dataBaseService.getSessions().subscribe({
-      next: (data: ISession[]) => {
-        this.sections = data;
-        this.filteredSessions = [...this.sections];
-      },
-      error: (erro) => {
-        console.error('Ocorreu um erro ao buscar as sessões:', erro);
-      },
-    });
-  }
+    if (sessionId) {
+      this.dataBaseService.getSession(sessionId).subscribe((data: ISession) => {
+        this.session = data;
+      });
 
-  removeSuino(session: ISession): void {
-    if (session.id) {
-      this.dataBaseService.deleteSession(session.id)
-        .subscribe(
-          {
-            next: () => {
-              console.log('Sessão excluída com sucesso.');
-              this.fetchSessions();
-            },
-            error: (erro) => {
-              console.error('Ocorreu um erro ao excluir a sessão:', erro);
-            }
-          }
-        );
-    } else {
-      console.error('ID da sessão é indefinido.');
+      this.dataBaseService.getSuinoActivitiesById(sessionId).subscribe((data: ISuinoActivity[]) => {
+        console.log(data);
+        this.suinoActivities = data;
+      });
     }
-  }
-
-  applyFilters(): void {
-    this.filteredSessions = this.sections.filter(session => {
-      return (!this.sessionDate || session.sessionDate.toString().includes(this.sessionDate)) &&
-        (!this.plannedActivities || session.plannedActivities.includes(this.plannedActivities));
-    });
-
-    console.log(this.filteredSessions)
   }
 }

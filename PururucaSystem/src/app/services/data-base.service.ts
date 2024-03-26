@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { ISuino, IWeight } from '../models/suino.model';
 import { IContato } from '../models/contato.model';
-import { ISession } from '../models/session.model';
+import { ISession, ISuinoActivity } from '../models/session.model';
 import { Observable, catchError, map, of } from 'rxjs';
 
 @Injectable({
@@ -136,5 +136,27 @@ export class DataBaseService {
 
   updateSession(id: string, sessionData: ISession): Observable<any> {
     return this.http.put(`https://pururucasystem-default-rtdb.firebaseio.com/sessions/${id}.json`, sessionData, { observe: 'response' });
+  }
+
+  getSuinoActivitiesById(id: string) {
+    return this.http.get<{ [key: string]: ISuinoActivity }>(`https://pururucasystem-default-rtdb.firebaseio.com/activities/${id}/suinos.json`).pipe(
+      map(responseData => {
+        const suinoActivitiesArray: ISuinoActivity[] = [];
+        for (const key in responseData) {
+          if (responseData.hasOwnProperty(key)) {
+            suinoActivitiesArray.push({ ...(responseData as any)[key], id: key });
+          }
+        }
+        return suinoActivitiesArray;
+      })
+    )
+  }
+
+  getSuinoActivityByID(id: string, suinoActivityId: string) {
+    return this.http.get<ISuinoActivity>(`https://pururucasystem-default-rtdb.firebaseio.com/activities/${id}/suinos/${suinoActivityId}.json`);
+  }
+
+  postSuinoActivity(data: any, id: string) {
+    return this.http.post(`https://pururucasystem-default-rtdb.firebaseio.com/activities/${id}/suinos.json`, data)
   }
 }

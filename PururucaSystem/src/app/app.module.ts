@@ -24,8 +24,9 @@ import { AgePipe } from './pipes/age/age.pipe';
 import { DetalhesPorcoComponent } from './detalhes-porco/detalhes-porco.component';
 import { ContatoComponent } from './contato/contato.component';
 import { CadastroSessaoComponent } from './cadastro-sessao/cadastro-sessao.component';
-import { SessaoComponent } from './sessao/sessao.component';
+import { ListagemSessaoComponent } from './listagem-sessao/listagem-sessao.component';
 import { DetalhesSessaoComponent } from './detalhes-sessao/detalhes-sessao.component';
+import { SessaoComponent } from './sessao/sessao.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,9 +39,10 @@ const routes: Routes = [
   { path: 'listagem-pesos/:id', canActivate: [AuthGuard], component: ListagemPesosComponent },
   { path: 'edita/:id', canActivate: [AuthGuard], component: EditaSuinoComponent },
   { path: 'contato', canActivate: [AuthGuard], component: ContatoComponent },
-  { path: 'sessao', canActivate: [AuthGuard], component: SessaoComponent },
+  { path: 'lista-sessao', canActivate: [AuthGuard], component: ListagemSessaoComponent },
   { path: 'edita-pesagem/:id/:pesagemId', canActivate: [AuthGuard], component: EditaPesagemComponent },
-  { path: 'detalhes-sessao/:id', component: DetalhesSessaoComponent },
+  { path: 'detalhes-sessao/:id', canActivate: [AuthGuard], component: DetalhesSessaoComponent },
+  { path: 'sessao/:id', canActivate: [AuthGuard], component: SessaoComponent },
 ];
 
 const icons = {
@@ -70,8 +72,9 @@ const icons = {
     DetalhesPorcoComponent,
     ContatoComponent,
     CadastroSessaoComponent,
+    ListagemSessaoComponent,
+    DetalhesSessaoComponent,
     SessaoComponent
-    DetalhesSessaoComponent
   ],
   imports: [
     BrowserModule,

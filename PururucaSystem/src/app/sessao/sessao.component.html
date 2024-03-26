@@ -1,63 +1,43 @@
-<div class="suinos-container">
-  <div class="filter-container">
-    <label for="sessionDate"
-      >Filtrar por Data da Sessão:
-      <input
-        type="date"
-        id="sessionDate"
-        [(ngModel)]="sessionDate"
-        (change)="applyFilters()"
-      />
-    </label>
-
-    <label for="plannedActivities"
-      >Filtrar por Atividade Planejada:
-      <select
-        id="plannedActivities"
-        [(ngModel)]="plannedActivities"
-        (change)="applyFilters()"
-      >
-      <option value="">Todos</option>
-        <option value="Vacinação">Vacinação</option>
-        <option value="Alimentação especial">Alimentação especial</option>
-        <option value="Exame de saúde">Exame de saúde</option>
-        <option value="Limpeza do ambiente">Limpeza do ambiente</option>
-        <option value="Manejo reprodutivo">Manejo reprodutivo</option>
-      </select>
-    </label>
-  </div>
+<div class="list-container">
+  <p>
+    {{ session.sessionDate | dateFormat }} # {{ session.plannedActivities }}
+  </p>
   <div class="table-container">
-    <table>
+    <!-- <table>
       <thead>
-        <tr>
-          <th>Data da Sessão</th>
-          <th>Descrição</th>
-          <th>Atividade Planejada</th>
-          <th>Detalhes</th>
-          <th>Abrir Sessão</th>
-          <th>Editar</th>
-          <th>Excluir</th>
+        <tr *ngIf="session.plannedActivities == 'Vacinação'">
+          <th>Brinco do porco</th>
+          <th *ngFor="let vaccine of session.vaccines">
+            {{ vaccine }}
+          </th>
+        </tr>
+        <tr *ngIf="session.plannedActivities != 'Vacinação'">
+          <th>Brinco do porco</th>
+          <th>{{ session.plannedActivities }}</th>
         </tr>
       </thead>
-      <tbody>
-        <tr class="sessão" *ngFor="let session of filteredSessions">
-          <td>{{ session.sessionDate }}</td>
-          <td>{{ session.sessionDescription }}</td>
-          <td>{{ session.plannedActivities }}</td>
-          <td class="details" [routerLink]="['/detalhes', session.id]">
-            <i-feather name="file-minus"></i-feather>
-          </td>
-          <td class="session" [routerLink]="['/casdastro-sessao']">
-            <i-feather name="clipboard"></i-feather>
-          </td>
-          <td class="edit" [routerLink]="['/edita', session.id]">
-            <i-feather name="edit"></i-feather>
-          </td>
-          <td class="remove" (click)="removeSuino(session)">
-            <i-feather name="trash"></i-feather>
+      <tbody *ngIf="session.plannedActivities == 'Vacinação'">
+        <tr class="sessao" *ngFor="let tag of suinoActivities">
+          <td>{{ tag.earTag }}</td>
+          <td>
+            <ng-container *ngIf="tag.activity && (Array.isArray(tag.activity) || tag.activity.hasOwnProperty('length'))">
+              <span *ngFor="let vaccine of [tag.activity]">{{ vaccine }}</span>
+            </ng-container>
+            <ng-container *ngIf="!Array.isArray(tag.activity)">{{ tag.activity }}</ng-container>
           </td>
         </tr>
       </tbody>
-    </table>
+      <tbody *ngIf="session.plannedActivities != 'Vacinação'">
+        <tr class="sessão" *ngFor="let tag of suinoActivities">
+          <td>{{ tag.earTag }}</td>
+          <td>
+            <ng-container *ngIf="tag.activity">
+              <span *ngIf="Array.isArray(tag.activity)">{{ tag.activity[0].name }}</span>
+              <span *ngIf="!Array.isArray(tag.activity)">{{ tag.activity.name }}</span>
+            </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table> -->
   </div>
 </div>

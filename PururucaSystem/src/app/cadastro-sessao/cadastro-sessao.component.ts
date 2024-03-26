@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataBaseService } from '../services/data-base.service';
 import { Router } from '@angular/router';
 import { ISuino } from '../models/suino.model';
+import { IActivity } from '../models/session.model';
 
 @Component({
   selector: 'app-cadastro-sessao',
@@ -46,8 +47,39 @@ export class CadastroSessaoComponent implements OnInit {
   addSession(): void {
     if (this.form.valid) {
       this.dataBaseService.addSession(this.form.value).subscribe({
-        next: () => {
-          console.log('Sessão registrada com sucesso!');
+        next: (res) => {
+          if (this.form.value.plannedActivities != "Vacinação") {
+            this.form.value.animalTags.forEach((tag: string) => {
+              let data = {
+                earTag: tag,
+                activity: {
+                  name: this.form.value.plannedActivities,
+                  status: false
+                }
+              }
+              this.dataBaseService.postSuinoActivity(data, res.name).subscribe(res => {
+                console.log(res);
+              });
+            });
+          } else {
+            this.form.value.animalTags.forEach((tag: string) => {
+              let data = {
+                earTag: tag,
+                activity: [] as IActivity[]
+              }
+              this.form.value.vaccines.forEach((vaccine: string) => {
+                let vaccineData = {
+                  name: vaccine,
+                  status: false
+                }
+
+                data.activity.push(vaccineData)
+              });
+              this.dataBaseService.postSuinoActivity(data, res.name).subscribe(res => {
+                console.log(res);
+              });
+            });
+          }
           alert('Sessão registrada com sucesso!');
           this.form.reset();
         },

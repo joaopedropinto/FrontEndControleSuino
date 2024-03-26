@@ -46,11 +46,11 @@
                 <label for="vaccines">
                     Tipo de Vacina
                     <select id="vaccines" formControlName="vaccines" multiple>
-                        <option value="Vacina para Gripe Suína">Vacina para Gripe Suína</option>
-                        <option value="Vacina contra Peste Suína">Vacina contra Peste Suína</option>
-                        <option value="Vacina contra Circovirose">Vacina contra Circovirose</option>
-                        <option value="Vacina contra Parvovirose">Vacina contra Parvovirose</option>
-                        <option value="Vacina contra Erisipela">Vacina contra Erisipela</option>
+                        <option value="Gripe Suína">Vacina para Gripe Suína</option>
+                        <option value="Peste Suína">Vacina contra Peste Suína</option>
+                        <option value="Circovirose">Vacina contra Circovirose</option>
+                        <option value="Parvovirose">Vacina contra Parvovirose</option>
+                        <option value="Erisipela">Vacina contra Erisipela</option>
                     </select>
                     <span *ngIf="!form.get('vaccines')?.valid && form.get('vaccines')?.touched">
                         Por favor, selecione os tipos de vacina!

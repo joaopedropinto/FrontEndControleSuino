@@ -68,6 +68,7 @@ export class ListagemPesosComponent implements OnInit {
 
   fetchPesos() {
     this.dataBaseService.getPesagensByID(this.id).subscribe((response) => {
+      console.log(response)
       this.pesos = response;
       this.arrayPesos = [];
       this.arrayDatas = [];

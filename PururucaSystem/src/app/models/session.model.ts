@@ -6,3 +6,15 @@ export interface ISession {
     plannedActivities: string;
     vaccines?: string[];
 }
+
+export interface IActivity {
+    id?: string;
+    name: string;
+    status: boolean;
+}
+
+export interface ISuinoActivity {
+    id?: string;
+    earTag: string;
+    activity: IActivity | IActivity[];
+}
