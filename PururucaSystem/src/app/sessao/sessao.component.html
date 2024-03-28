@@ -3,41 +3,45 @@
     {{ session.sessionDate | dateFormat }} # {{ session.plannedActivities }}
   </p>
   <div class="table-container">
-    <!-- <table>
+    <table>
       <thead>
         <tr *ngIf="session.plannedActivities == 'Vacinação'">
           <th>Brinco do porco</th>
-          <th *ngFor="let vaccine of session.vaccines">
-            {{ vaccine }}
-          </th>
+          <th *ngFor="let vaccine of session.vaccines">{{ vaccine }}</th>
         </tr>
         <tr *ngIf="session.plannedActivities != 'Vacinação'">
           <th>Brinco do porco</th>
           <th>{{ session.plannedActivities }}</th>
         </tr>
       </thead>
-      <tbody *ngIf="session.plannedActivities == 'Vacinação'">
-        <tr class="sessao" *ngFor="let tag of suinoActivities">
-          <td>{{ tag.earTag }}</td>
-          <td>
-            <ng-container *ngIf="tag.activity && (Array.isArray(tag.activity) || tag.activity.hasOwnProperty('length'))">
-              <span *ngFor="let vaccine of [tag.activity]">{{ vaccine }}</span>
-            </ng-container>
-            <ng-container *ngIf="!Array.isArray(tag.activity)">{{ tag.activity }}</ng-container>
+      <tbody *ngIf="session && session.plannedActivities == 'Vacinação'">
+        <tr class="sessão" *ngFor="let item of suinoActivities; let i = index">
+          <td>{{ item.earTag }}</td>
+          <td *ngFor="let vaccine of item.activity; let j = index">
+            <select
+              [(ngModel)]="vaccine.status"
+              (change)="updateVaccineStatus(item.id, j, vaccine.status)"
+            >
+              <option [ngValue]="true">Concluído</option>
+              <option [ngValue]="false">Não concluído</option>
+            </select>
           </td>
         </tr>
       </tbody>
       <tbody *ngIf="session.plannedActivities != 'Vacinação'">
-        <tr class="sessão" *ngFor="let tag of suinoActivities">
-          <td>{{ tag.earTag }}</td>
+        <tr class="sessão" *ngFor="let item of suinoActivities; let i = index">
+          <td>{{ item.earTag }}</td>
           <td>
-            <ng-container *ngIf="tag.activity">
-              <span *ngIf="Array.isArray(tag.activity)">{{ tag.activity[0].name }}</span>
-              <span *ngIf="!Array.isArray(tag.activity)">{{ tag.activity.name }}</span>
-            </ng-container>
+            <select
+              [(ngModel)]="item.activity.status"
+              (change)="updateActivityStatus(item.id, item.activity.status)"
+            >
+              <option [ngValue]="true">Concluído</option>
+              <option [ngValue]="false">Não concluído</option>
+            </select>
           </td>
         </tr>
       </tbody>
-    </table> -->
+    </table>
   </div>
 </div>

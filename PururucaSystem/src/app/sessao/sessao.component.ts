@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ISession, ISuinoActivity } from '../models/session.model';
+import { ISession, ISuinoActivity, ISuinoVaccines } from '../models/session.model';
 import { DataBaseService } from '../services/data-base.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -10,7 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SessaoComponent implements OnInit {
   session!: ISession;
-  suinoActivities!: ISuinoActivity[];
+  suinoActivities!: any[];
+  sessionId: string | null = this.route.snapshot.paramMap.get('id')
 
   constructor(private dataBaseService: DataBaseService, private route: ActivatedRoute) { }
 
@@ -22,10 +23,26 @@ export class SessaoComponent implements OnInit {
         this.session = data;
       });
 
-      this.dataBaseService.getSuinoActivitiesById(sessionId).subscribe((data: ISuinoActivity[]) => {
-        console.log(data);
+      this.dataBaseService.getSuinoActivitiesById(sessionId).subscribe((data: any) => {
         this.suinoActivities = data;
       });
     }
+  }
+
+  updateActivityStatus(suinoId: any, newStatus: boolean): void {
+    this.dataBaseService.updateSuinoActivityStatus(this.sessionId, suinoId, newStatus)
+      .subscribe(() => {
+      }, error => {
+        console.error('Erro ao atualizar o status da atividade:', error);
+      });
+  }
+
+  updateVaccineStatus(suinoId: any, activityId: any, newStatus: boolean): void {
+    console.log(`https://pururucasystem-default-rtdb.firebaseio.com/activities/${this.sessionId}/suinos/${suinoId}/activity/${activityId}.json`)
+    this.dataBaseService.updateSuinoVaccineStatus(this.sessionId, activityId, suinoId, newStatus)
+      .subscribe(() => {
+      }, error => {
+        console.error('Erro ao atualizar o status da atividade:', error);
+      });
   }
 }
