@@ -42,7 +42,7 @@ const routes: Routes = [
   { path: 'lista-sessao', canActivate: [AuthGuard], component: ListagemSessaoComponent },
   { path: 'edita-pesagem/:id/:pesagemId', canActivate: [AuthGuard], component: EditaPesagemComponent },
   { path: 'detalhes-sessao/:id', canActivate: [AuthGuard], component: DetalhesSessaoComponent },
-  { path: 'sessao/:id', canActivate: [AuthGuard], component: SessaoComponent },
+  { path: 'sessao/:id', component: SessaoComponent },
 ];
 
 const icons = {

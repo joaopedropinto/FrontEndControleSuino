@@ -2,8 +2,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { ISuino, IWeight } from '../models/suino.model';
 import { IContato } from '../models/contato.model';
-import { ISession, ISuinoActivity } from '../models/session.model';
+import { ISession, ISuinoActivity, ISuinoVaccines } from '../models/session.model';
 import { Observable, catchError, map, of } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -139,9 +140,9 @@ export class DataBaseService {
   }
 
   getSuinoActivitiesById(id: string) {
-    return this.http.get<{ [key: string]: ISuinoActivity }>(`https://pururucasystem-default-rtdb.firebaseio.com/activities/${id}/suinos.json`).pipe(
+    return this.http.get<{ [key: string]: any }>(`https://pururucasystem-default-rtdb.firebaseio.com/activities/${id}/suinos.json`).pipe(
       map(responseData => {
-        const suinoActivitiesArray: ISuinoActivity[] = [];
+        const suinoActivitiesArray: any[] = [];
         for (const key in responseData) {
           if (responseData.hasOwnProperty(key)) {
             suinoActivitiesArray.push({ ...(responseData as any)[key], id: key });
@@ -158,5 +159,20 @@ export class DataBaseService {
 
   postSuinoActivity(data: any, id: string) {
     return this.http.post(`https://pururucasystem-default-rtdb.firebaseio.com/activities/${id}/suinos.json`, data)
+  }
+
+  updateSuinoActivityStatus(sessionId: string | null, suinoId: string, newStatus: boolean): Observable<any> {
+    return this.http.patch(`https://pururucasystem-default-rtdb.firebaseio.com/activities/${sessionId}/suinos/${suinoId}/activity.json`, { status: newStatus });
+  }
+
+  updateSuinoVaccineStatus(sessionId: string | null, suinoId: string, activityId: any, newStatus: boolean): Observable<any> {
+    const updateData: { [key: string]: any } = {};
+    updateData[`/activities/${sessionId}/suinos/${suinoId}/activity/${activityId}/status`] = { status: newStatus };
+
+    return this.http.patch(
+      'https://pururucasystem-default-rtdb.firebaseio.com/.json',
+      updateData,
+      { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+    );
   }
 }

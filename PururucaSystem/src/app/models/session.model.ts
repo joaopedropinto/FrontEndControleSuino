@@ -1,5 +1,5 @@
 export interface ISession {
-    id?: string;
+    id: string;
     sessionDate: string;
     sessionDescription: string;
     animalTags: string[];
@@ -16,5 +16,11 @@ export interface IActivity {
 export interface ISuinoActivity {
     id?: string;
     earTag: string;
-    activity: IActivity | IActivity[];
+    activity: IActivity;
+}
+
+export interface ISuinoVaccines {
+    id?: string;
+    earTag: string;
+    activity: IActivity[];
 }
